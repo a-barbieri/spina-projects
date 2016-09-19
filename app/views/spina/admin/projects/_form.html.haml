@@ -11,6 +11,8 @@
   - content_for :notification_alert do
     = error_explanation!(@project)
 
+  = @project.errors.full_messages[0]
+
   #page_content.tab-content.active.well
     .horizontal-form
       .horizontal-form-group
