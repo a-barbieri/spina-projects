@@ -23,6 +23,7 @@ module Spina
       end
 
       def create
+        puts '------ > CREATE!'
         add_breadcrumb "New project"
         @project = Project.new(project_params)
         if @project.save
@@ -59,7 +60,7 @@ module Spina
       def project_params
         params.require(:project).permit(
           :title, :slug, :description, :duration, :completion_date,
-          :project_category_id, :testimonial, :testimonial_name, :photo_id,
+          :project_category_id, :photo_id,
           :photo_collection_id, photo_collection_attributes: [:photo_tokens, :photo_positions])
       end
     end
