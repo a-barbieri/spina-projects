@@ -9,11 +9,11 @@ module Spina
     before_validation :set_slug
     after_save :rewrite_rule
 
-    validates :title, :description, :lat, :long, :project_category_id, presence: true
+    validates :title, :description, :project_category_id, presence: true
     validates :slug, uniqueness: true
     accepts_nested_attributes_for :photo_collection
 
-    scope :newest_first, -> { order('completion_date DESC') }
+    # scope :newest_first, -> { order('completion_date DESC') }
 
     def materialized_path
       "/project/#{slug}"

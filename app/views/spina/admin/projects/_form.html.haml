@@ -41,16 +41,6 @@
           = f.text_field :completion_date, value: (@project.completion_date.try(:strftime, "%d-%m-%Y") unless @project.new_record?), class: 'datepicker'
       .horizontal-form-group
         .horizontal-form-label
-          Latitude co-ordinate
-        .horizontal-form-content
-          = f.text_field :lat
-      .horizontal-form-group
-        .horizontal-form-label
-          Longitude co-ordinate
-        .horizontal-form-content
-          = f.text_field :long
-      .horizontal-form-group
-        .horizontal-form-label
           Photos
         .horizontal-form-content
           = link_to spina.photo_collection_select_admin_photos_path(f.object_name, selected_photo_ids: (f.object.photo_collection.photo_ids if f.object.photo_collection_id.present?), hidden_field_id: 'photo_collection_id'), remote: true, class: 'media_picker clearfix' do
@@ -69,17 +59,6 @@
                 = render 'spina/admin/photos/photo_collection', photos: f.object.photo_collection.photos.sorted_by_photo_collection
               - elsif f.object.photo_collection.photos.any?
                 = render 'spina/admin/photos/photo_collection', photos: f.object.photo_collection.photos
-
-      .horizontal-form-group
-        .horizontal-form-label
-          Testimonial
-        .horizontal-form-content
-          = f.text_area :testimonial
-      .horizontal-form-group
-        .horizontal-form-label
-          Testimonial Author
-        .horizontal-form-content
-          = f.text_field :testimonial_name
 
   - unless @project.new_record?
     .pull-right= link_to t('spina.permanently_delete'), spina.admin_project_path(@project), method: :delete, data: { confirm: t('spina.pages.delete_confirmation', subject: @project.title) }, class: 'button button-link button-danger'
