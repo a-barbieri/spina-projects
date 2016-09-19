@@ -23,7 +23,6 @@ module Spina
       end
 
       def create
-        puts '------ > CREATE!'
         add_breadcrumb "New project"
         @project = Project.new(project_params)
         if @project.save
