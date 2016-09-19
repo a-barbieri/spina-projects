@@ -11,7 +11,10 @@
   - content_for :notification_alert do
     = error_explanation!(@project)
 
-  = @project.errors.full_messages[0]
+  - if @project.errors.full_messages.any? 
+    %p any
+  - if @project.errors.empty?
+    %p empty 
 
   #page_content.tab-content.active.well
     .horizontal-form
@@ -20,12 +23,6 @@
           Title
         .horizontal-form-content
           = f.text_field :title
-      / .horizontal-form-group
-      /   .horizontal-form-label
-      /     Category
-      /   .horizontal-form-content
-      /     .select-dropdown
-      /       = f.collection_select :project_category_id, Spina::ProjectCategory.all, :id, :name, { include_blank: 'Please Select' }
       .horizontal-form-group
         .horizontal-form-label
           Description
