@@ -11,8 +11,7 @@
   - content_for :notification_alert do
     = error_explanation!(@project)
 
-  - if @project.errors.any?
-    = error_explanation!(@project)
+  = error_explanation!(@project)
 
   #page_content.tab-content.active.well
     .horizontal-form
